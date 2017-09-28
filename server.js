@@ -5,11 +5,20 @@ const Hapi = require('hapi');
 const server = new Hapi.Server();
 server.connection({ port: 3000, host: 'localhost'  });
 
+const startGame = require('./api/game');
 const userDb = {};
 
 const _addUser = (newUser, userDb) => {
     userDb[newUser.email] = newUser
 };
+
+const _checkIfEnoughPlayers = (callback) => {
+    if (Object.keys(userDb).length < 2) {
+        return setImmediate(() => _checkIfEnoughPlayers(callback));
+    }
+
+    callback();
+}
 server.route({
     method: 'GET',
     path: '/',
@@ -41,12 +50,6 @@ server.start((err) => {
     }
     console.log(`Server running at: ${server.info.uri}`);
 
-    startGame(
-        choosePlayers,
-        waitForRequest,
-        sendResults,
-        startGame
-    );
-
+    _checkIfEnoughPlayers(() => startGame(userDb));
 });
 
