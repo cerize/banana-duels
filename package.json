@@ -2,6 +2,11 @@
   "name": "banana-duels",
   "version": "1.0.0",
   "description": "",
+  "main": "index.js",
+  "scripts": {
+    "api": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cerize/banana-duels.git"
@@ -31,6 +36,7 @@
   },
   "dependencies": {
     "expo": "^21.0.0",
+    "hapi": "^16.6.2"
     "react": "16.0.0-alpha.12",
     "react-native": "^0.48.4"
   }
