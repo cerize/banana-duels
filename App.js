@@ -9,6 +9,9 @@ import Login from './src/client/components/Login.js';
 export default class App extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      status: 'loggedOff'
+    }
 
     // Creating the socket-client instance will automatically connect to the server.
     this.socket = io('http://192.168.0.23:3000', {reconnect: true});
@@ -22,6 +25,9 @@ export default class App extends React.Component {
     }, 1000)
   }
 
+  getComponentToRender() {
+    
+  }
 
   render() {
     return (
