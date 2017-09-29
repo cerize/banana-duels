@@ -5,7 +5,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image source={require('../images/home.png')} style={{width: '100%'}}/>
+        <Image source={require('../images/waiting.jpg')} style={{width: '100%'}}/>
         <Text style={styles.text}>Welcome to Banana Duels!!!</Text>
       </View>
     );

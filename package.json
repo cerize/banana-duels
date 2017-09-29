@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "api": "node server.js",
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cerize/banana-duels.git"

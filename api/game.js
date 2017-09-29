@@ -10,7 +10,7 @@ const startGame = (userDb) => {
     _pushToPlayers(playersToPlay, () => {
         // _calculateWinner();
         // _sendResult();
-        console.log('game done');
+        
         setImmediate(() => startGame(userDb));
     });
 };

@@ -1,9 +1,22 @@
 'use strict';
 
 const Hapi = require('hapi');
+const Http = require('http');
 
 const server = new Hapi.Server();
-server.connection({ port: 3000, host: 'localhost'  });
+server.connection({ port: 3000});
+
+var io = require('socket.io')(server.listener);
+
+io.on('connection', function (socket) {
+    console.log('connected!!!!!!!!');
+    socket.emit('Oh hii!');
+
+    socket.on('burp', function () {
+        socket.emit('Excuse you!');
+    });
+});
+
 
 const startGame = require('./api/game');
 const userDb = {
