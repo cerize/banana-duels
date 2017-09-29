@@ -2,6 +2,10 @@
   "name": "banana-duels",
   "version": "1.0.0",
   "description": "",
+  "main": "index.js",
+  "scripts": {
+    "api": "node server.js",
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cerize/banana-duels.git"
@@ -20,6 +24,7 @@
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
+    "start-api": "node src/api/server.js",
     "start": "react-native-scripts start",
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
@@ -31,8 +36,11 @@
   },
   "dependencies": {
     "expo": "^21.0.0",
+    "hapi": "^16.6.2",
+    "lodash": "^4.17.4",
     "react": "16.0.0-alpha.12",
-    "react-native": "^0.48.4"
+    "react-native": "^0.48.4",
+    "socket.io": "^2.0.3",
+    "socket.io-client": "^2.0.3"
   }
 }
-
