@@ -8,11 +8,20 @@ import Login from './src/client/components/Login.js';
 export default class App extends React.Component {
   constructor(props){
     super(props);
-
     this.state = {
+      test: ''
       username: '',
       login: false
-    }
+    };
+    // Creating the socket-client instance will automatically connect to the server.
+    this.socket = io('http://localhost:5000', {jsonp: false});
+    this.socket.on('connect', function() {
+        this.setState({ test: 'connected' });
+    })
+    // this.socket.on('message', (message) => {
+    //   // React will automatically rerender the component when a new message is added.
+    //   this.setState({ messages: { hello: 'world' } });
+    // });
   }
 
   setUsername = (username) => {
