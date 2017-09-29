@@ -5,7 +5,13 @@ export default class Result extends React.Component {
   render() {
     return (
         <Image source={require('../images/waiting.jpg')} style={styles.backgroundImage}>
-            <Button title='cancel' style={styles.button}>Cancel</Button>
+            <Text
+                onPress={() => {this.props.splat()}}
+                style={styles.button}>
+                
+                Splat
+            
+            </Text>
         </Image>
     );
   }

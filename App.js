@@ -30,6 +30,10 @@ export default class App extends React.Component {
     this.setState({view})
   }
 
+  _splat = () => {
+    this.socket.emit('splat', {data: 'foo'})
+  }
+
   componentDidMount() {
     setInterval(() => { 
       this.socket.emit('test', {data: 'foo'})
@@ -50,7 +54,7 @@ export default class App extends React.Component {
         break;
       case 'duel':
         return (
-          <Duel goTo={this._goTo}/>
+          <Duel goTo={this._splat}/>
         );
         break;
       default:
