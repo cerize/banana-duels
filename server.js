@@ -12,8 +12,9 @@ io.on('connection', function (socket) {
     console.log('connected!!!!!!!!');
     socket.emit('Oh hii!');
 
-    socket.on('burp', function () {
-        socket.emit('Excuse you!');
+    socket.on('test', function (data) {
+        console.log('hi', data);
+        // socket.emit('Excuse you!');
     });
 });
 

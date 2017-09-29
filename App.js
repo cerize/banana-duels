@@ -16,6 +16,13 @@ export default class App extends React.Component {
     })
   }
 
+  componentDidMount() {
+    setInterval(() => { 
+      this.socket.emit('test', {data: 'foo'})
+    }, 1000)
+  }
+
+
   render() {
     return (
       <Home />
