@@ -14,7 +14,7 @@ export default class App extends React.Component {
       login: false
     };
     // Creating the socket-client instance will automatically connect to the server.
-    this.socket = io('http://localhost:5000', {jsonp: false});
+    this.socket = io('http://192.168.0.23:5000', {reconnect: true});
     this.socket.on('connect', function() {
         this.setState({ test: 'connected' });
     })
