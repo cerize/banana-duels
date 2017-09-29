@@ -1,16 +1,23 @@
-var express = require('express');
-var http = require('http')
-var socketio = require('socket.io');
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
-var app = express();
-var server = http.Server(app);
-var websocket = socketio(server);
-
-server.listen(5000, () => console.log('listening on *:5000'));
-
-// The event will be called when a client is connected.
-websocket.on('connection', (socket) => {
-  console.log('A client just joined on', socket.id);
+app.get('/', function(req, res){
+  res.json('sup')
 });
 
-websocket.on('channel-name', (message) => console.log(message));
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
+
+io.on('message', (message) => {
+  console.log('message emit')
+  // Save the message document in the `messages` collection.
+  r.
+  io.broadcast.emit('message', message);
+  // The `broadcast` allows us to send to all users but the sende
+});
+
+http.listen(5000, function(){
+  console.log('listening on *:5000');
+});
