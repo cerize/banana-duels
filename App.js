@@ -4,16 +4,15 @@ import io from 'socket.io-client';
 import Home from './src/client/components/Home.js';
 import Waiting from './src/client/components/Waiting.js'
 import Duel from './src/client/components/Duel.js'
+import Result from './src/client/components/Result.js'
 
-
-
-import Login from './src/client/components/Login.js';
 
 export default class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      view: 'loggedOff'
+      view: 'duel'
+      // view: 'home'
     }
 
     // Creating the socket-client instance will automatically connect to the server.
@@ -30,6 +29,10 @@ export default class App extends React.Component {
     this.setState({view})
   }
 
+  _splat = () => {
+    this.socket.emit('splat', {data: 'foo'})
+  }
+
   componentDidMount() {
     setInterval(() => { 
       this.socket.emit('test', {data: 'foo'})
@@ -38,7 +41,7 @@ export default class App extends React.Component {
 
   _getComponentToRender = () => {
     switch(this.state.view) {
-      case 'loggedOff':
+      case 'home':
         return (
           <Home goTo={this._goTo}/>
         );
@@ -50,7 +53,17 @@ export default class App extends React.Component {
         break;
       case 'duel':
         return (
-          <Duel goTo={this._goTo}/>
+          <Duel splat={this._splat}/>
+        );
+        break;
+      case 'winner':
+        return (
+          <Result result="winner" goTo={this._goTo}/>
+        );
+        break;
+      case 'loser':
+        return (
+          <Result result="loser" goTo={this._goTo}/>
         );
         break;
       default:

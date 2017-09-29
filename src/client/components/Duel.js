@@ -4,26 +4,47 @@ import { Image, StyleSheet, Text, View, Button } from 'react-native';
 export default class Result extends React.Component {
   render() {
     return (
-        <Image source={require('../images/waiting.jpg')} style={styles.backgroundImage}>
-            <Button title='cancel' style={styles.button}>Cancel</Button>
+      <View style={styles.container}>
+        <Image source={require('../images/duel.jpg')} style={styles.image}>
+            <Text
+                onPress={() => {this.props.splat()}}
+                style={styles.paragraph}>
+                
+                SHOOT!
+            
+            </Text>
         </Image>
+      </View>
     );
   }
 }
 
-let styles = StyleSheet.create({
-  backgroundImage: {
+const styles = StyleSheet.create({
+  container: {
     flex: 1,
-    width: null,
-    height: null, // or 'stretch'
+    alignItems: 'stretch',
+    justifyContent: 'center',
   },
-  button: {
+  image: {
+    flexGrow:1,
+    height:null,
+    width:null,
+    alignItems: 'center',
+    justifyContent:'center',
+    resizeMode: 'stretch' 
+  },
+  paragraph: {
+    textAlign: 'center',
     position: 'absolute',
-    bottom:0,
-    left:0,
-    backgroundColor: 'blue',
+    bottom: 100,
     height: 100,
     width: 200,
-    textAlign: 'center',
-  }
+    lineHeight: 100,
+    backgroundColor: '#f30a4b',
+    fontSize: 30,
+    borderColor: 'white',
+    borderWidth: 2,
+    color: 'white',
+    fontWeight: 'bold'
+  },
 });
