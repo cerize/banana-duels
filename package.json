@@ -2,7 +2,7 @@
   "name": "banana-duels",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cerize/banana-duels.git"
@@ -19,7 +19,6 @@
     "jest-expo": "^21.0.2",
     "react-test-renderer": "16.0.0-alpha.12"
   },
-  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
     "start-api": "node src/api/server.js",
     "start": "react-native-scripts start",
@@ -32,6 +31,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "async": "^2.5.0",
     "expo": "^21.0.0",
     "hapi": "^16.6.2",
     "lodash": "^4.17.4",

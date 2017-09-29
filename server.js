@@ -1,33 +1,43 @@
 'use strict';
 
+const _ = require('lodash');
+const EventEmitter = require('events');
+
 const Hapi = require('hapi');
 const Http = require('http');
 
 const server = new Hapi.Server();
-server.connection({ port: 3000});
+server.connection({ port: 3000 });
 
 var io = require('socket.io')(server.listener);
 
-io.on('connection', function (socket) {
-    console.log('connected!!!!!!!!');
-    socket.emit('Oh hii!');
+class MyEmitter extends EventEmitter {}
 
-    socket.on('test', function (data) {
-        console.log('hi', data);
-        // socket.emit('Excuse you!');
-    });
+const myEmitter = new MyEmitter();
+
+io.on('connection', function (socket) {
+    _addUser(socket.id, userDb);
+
+    socket.on('splat', () => {
+        myEmitter.emit('event');
+    })
+
+    socket.on('disconnect', () => {
+        _removeUser(socket.id, userDb);
+    })
 });
 
 
 const startGame = require('./api/game');
-const userDb = {
-    'oiajsdf': { email: 'sijofsidfj' },
-    'jefefji': { email: 'osijdf98sjdf' }
-};
+const userDb = {};
 
 const _addUser = (newUser, userDb) => {
-    userDb[newUser.email] = newUser
+    userDb[newUser] = newUser
 };
+
+const _removeUser = (user, userDb) => {
+    delete userDb[user];
+}
 
 const _checkIfEnoughPlayers = (callback) => {
     if (Object.keys(userDb).length < 2) {
@@ -67,6 +77,6 @@ server.start((err) => {
     }
     console.log(`Server running at: ${server.info.uri}`);
 
-    _checkIfEnoughPlayers(() => startGame(userDb));
+    _checkIfEnoughPlayers(() => startGame(io, userDb, myEmitter));
 });
 
