@@ -5,42 +5,46 @@ import Waiting from './Waiting'
 export default class Home extends React.Component {
   render() {
     return (
-    <Image source={require('../images/home.jpg')} style={styles.backgroundImage}>
-      <Text
-        onPress={() => {this.props.goTo('waiting')}}
-        style={styles.button}>
-        
-        Cancel
-        
-      </Text>
-    </Image>
+      <View style={styles.container}>
+        <Image source={require('../images/home.jpg')} style={styles.image}>
+          <Text
+            onPress={() => {this.props.goTo('waiting')}}
+            style={styles.paragraph}>
+            
+            ENTER
+            
+          </Text>
+        </Image>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  backgroundImage: {
-    flex: 1,
-    width: null,
-    height: null, // or 'stretch'
-  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    alignItems: 'stretch',
     justifyContent: 'center',
   },
-  text: {
-    fontSize: 30,
+  image: {
+    flexGrow:1,
+    height:null,
+    width:null,
+    alignItems: 'center',
+    justifyContent:'center',
+    resizeMode: 'stretch' 
   },
-  button: {
-    position: 'absolute',
-    bottom:0,
-    left:0,
-    backgroundColor: 'blue',
-    height: 100,
-    width: 200,
+  paragraph: {
     textAlign: 'center',
-    zIndex: 10,
-  }
+    position: 'absolute',
+    bottom: 150,
+    height: 50,
+    width: 150,
+    lineHeight:50,
+    backgroundColor: 'transparent',
+    fontSize: 20,
+    borderColor: 'white',
+    borderWidth: 1,
+    color: 'white'
+  },
 });
