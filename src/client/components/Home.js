@@ -1,13 +1,15 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
+import Waiting from './Waiting'
 
 export default class Home extends React.Component {
   render() {
-    return (
-      <View style={styles.container}>
+      {/*<View style={styles.container}>
         <Image source={require('../images/home.png')} style={{width: '100%'}}/>
         <Text style={styles.text}>Welcome to Banana Duels!!!</Text>
-      </View>
+      </View>*/}
+    return (
+      <Waiting />
     );
   }
 }
