@@ -21,7 +21,7 @@ export default class App extends React.Component {
     this.socket.on('connect', function() {
     })
     this.socket.on('duel', function() {
-      this.setState({'duel'})
+      this.setState({view: 'duel'})
     })
   }
 
