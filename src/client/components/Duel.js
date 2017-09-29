@@ -4,7 +4,7 @@ import { Image, StyleSheet, Text, View, Button } from 'react-native';
 export default class Result extends React.Component {
   render() {
     return (
-        <Image source={require('../images/waiting.jpg')} style={styles.backgroundImage}>
+        <Image source={require('../images/duel.jpg')} style={styles.backgroundImage}>
             <Text
                 onPress={() => {this.props.splat()}}
                 style={styles.button}>

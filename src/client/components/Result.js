@@ -1,26 +1,45 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View, Button } from 'react-native';
 
 export default class Result extends React.Component {
   render() {
-    return (
-      <View style={styles.container}>
-      <Image source={require('./src/client/images/home.png')} style={{width: '100%'}}/>
-      <Text style={styles.text}>Welcome to Banana Duels!!!</Text>
-
-      </View>
-    );
+    if (this.props.result === 'winner') {
+      return (
+        <Image source={require('../images/winner.jpg')} style={styles.backgroundImage}>
+          <Text
+            onPress={() => {this.props.goTo('home')}}
+            style={styles.button}>
+            Exit
+          </Text>
+        </Image>
+      )
+    } else {
+      return (
+        <Image source={require('../images/loser.jpg')} style={styles.backgroundImage}>
+          <Text
+            onPress={() => {this.props.goTo('home')}}
+            style={styles.button}>
+            Exit
+          </Text>
+        </Image>
+      )
+    }
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
+let styles = StyleSheet.create({
+  backgroundImage: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: null,
+    height: null, // or 'stretch'
   },
-  text: {
-    fontSize: 30,
+  button: {
+    position: 'absolute',
+    bottom:0,
+    left:0,
+    backgroundColor: 'blue',
+    height: 100,
+    width: 200,
+    textAlign: 'center',
   }
 });
