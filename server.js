@@ -6,7 +6,10 @@ const server = new Hapi.Server();
 server.connection({ port: 3000, host: 'localhost'  });
 
 const startGame = require('./api/game');
-const userDb = {};
+const userDb = {
+    'oiajsdf': { email: 'sijofsidfj' },
+    'jefefji': { email: 'osijdf98sjdf' }
+};
 
 const _addUser = (newUser, userDb) => {
     userDb[newUser.email] = newUser
