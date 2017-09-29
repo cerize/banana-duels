@@ -16,10 +16,14 @@ class MyEmitter extends EventEmitter {}
 const myEmitter = new MyEmitter();
 
 io.on('connection', function (socket) {
-    _addUser(socket.id, userDb);
+    
+
+    if (_.get(socket, 'conn.remoteAddress') !== '192.168.0.24') {
+        _addUser(socket.id, userDb);
+    }
 
     socket.on('splat', () => {
-        myEmitter.emit('event');
+        myEmitter.emit('event', socket.id);
     })
 
     socket.on('disconnect', () => {

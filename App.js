@@ -11,17 +11,12 @@ export default class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      view: 'winner'
-      // view: 'home'
+      
+      view: 'home'
     }
 
     // Creating the socket-client instance will automatically connect to the server.
-    this.socket = io('http://192.168.0.23:3000', {reconnect: true});
-    this.socket.on('connect', function() {
-    })
-    this.socket.on('duel', function() {
-      this.setState({view: 'duel'})
-    })
+    this.socket = io('http://192.168.0.23:3000');
   }
 
   _goTo = (view) => {
@@ -34,6 +29,15 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
+    this.socket.on('connect', () => {
+    })
+    this.socket.on('duel', () => {
+      this.setState({view: 'duel'})
+    })
+    this.socket.on('result', (data) => {
+      this.setState({ view: data.result })
+    })
+
     setInterval(() => { 
       this.socket.emit('test', {data: 'foo'})
     }, 1000)
