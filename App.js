@@ -1,7 +1,22 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
+window.navigator.userAgent = "react-native";
+// import websocketClient from './websocket_client';
+import SocketIOClient from 'socket.io-client/socket.io;
+
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+  
+    // Creating the socket-client instance will automatically connect to the server.
+    this.socket = SocketIOClient('http://localhost:5000', {jsonp: false});
+  }
+
+  componentDidMount() {
+    this.socket.emit('channel-name', 'Hello world!');
+  }
+
   render() {
     // let pic = require('./images/home.png')
     return (
