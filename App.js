@@ -6,7 +6,7 @@ export default class App extends React.Component {
     // let pic = require('./images/home.png')
     return (
       <View style={styles.container}>
-      <Image source={require('./images/home.png')} style={{width: '100%'}}/>
+      <Image source={require('./src/client/images/home.png')} style={{width: '100%'}}/>
       <Text style={styles.text}>Welcome to Banana Duels!!!</Text>
 
       </View>
