@@ -2,25 +2,40 @@ import React from 'react';
 import { Image, StyleSheet, Text, View, Button } from 'react-native';
 
 export default class Result extends React.Component {
+
   render() {
     if (this.props.result === 'winner') {
       return (
         <Image source={require('../images/winner.jpg')} style={styles.backgroundImage}>
+               
           <Text
             onPress={() => {this.props.goTo('home')}}
             style={styles.button}>
             Exit
           </Text>
+          <Text
+            onPress={() => {this.props.goTo('waiting')}}
+            style={styles.button}>
+            Again
+          </Text>
+    
         </Image>
       )
     } else {
       return (
         <Image source={require('../images/loser.jpg')} style={styles.backgroundImage}>
-          <Text
-            onPress={() => {this.props.goTo('home')}}
-            style={styles.button}>
-            Exit
-          </Text>
+      
+        <Text
+          onPress={() => {this.props.goTo('home')}}
+          style={styles.button}>
+          Exit
+        </Text>
+        <Text
+          onPress={() => {this.props.goTo('waiting')}}
+          style={styles.button}>
+          Again
+        </Text>
+      
         </Image>
       )
     }
