@@ -35,10 +35,6 @@ export default class App extends React.Component {
     this.socket.on('result', (data) => {
       this.setState({ view: data.result })
     })
-
-    // setInterval(() => { 
-    //   this.socket.emit('test', {data: 'foo'})
-    // }, 1000)
   }
 
   _getComponentToRender = () => {

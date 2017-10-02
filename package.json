@@ -20,7 +20,7 @@
     "react-test-renderer": "16.0.0-alpha.12"
   },
   "scripts": {
-    "start-api": "node src/api/server.js",
+    "start-api": "node server.js",
     "start": "react-native-scripts start",
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",

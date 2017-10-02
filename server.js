@@ -2,22 +2,19 @@
 
 const _ = require('lodash');
 const EventEmitter = require('events');
-
 const Hapi = require('hapi');
 const Http = require('http');
-
 const server = new Hapi.Server();
+
 server.connection({ port: 3000 });
 
-var io = require('socket.io')(server.listener);
+const io = require('socket.io')(server.listener);
 
 class MyEmitter extends EventEmitter {}
 
 const myEmitter = new MyEmitter();
 
 io.on('connection', function (socket) {
-    
-
     if (_.get(socket, 'conn.remoteAddress') !== '192.168.0.24') {
         _addUser(socket.id, userDb);
     }
@@ -32,7 +29,7 @@ io.on('connection', function (socket) {
 });
 
 
-const startGame = require('./api/game');
+const startGame = require('./src/api/game');
 const userDb = {};
 
 const _addUser = (newUser, userDb) => {
@@ -50,20 +47,12 @@ const _checkIfEnoughPlayers = (callback) => {
 
     callback();
 }
+
 server.route({
     method: 'GET',
     path: '/',
     handler: function (request, reply) {
         reply('Hello, world!');
-    }
-});
-
-server.route({
-    method: 'POST',
-    path: '/login',
-    handler: function (request, reply) {
-        _addUser(request.payload, userDb)
-        reply();
     }
 });
 
