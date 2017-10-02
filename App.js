@@ -11,7 +11,6 @@ export default class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      
       view: 'home'
     }
 
@@ -20,7 +19,6 @@ export default class App extends React.Component {
   }
 
   _goTo = (view) => {
-    console.log('ccccc', view);
     this.setState({view})
   }
 
@@ -38,9 +36,9 @@ export default class App extends React.Component {
       this.setState({ view: data.result })
     })
 
-    setInterval(() => { 
-      this.socket.emit('test', {data: 'foo'})
-    }, 1000)
+    // setInterval(() => { 
+    //   this.socket.emit('test', {data: 'foo'})
+    // }, 1000)
   }
 
   _getComponentToRender = () => {
@@ -72,9 +70,9 @@ export default class App extends React.Component {
         break;
       default:
          return(
-           <Text>Defaulttttttt</Text>
+           <Text>Default View</Text>
          )
-  }
+    }
   }
 
   render() {
