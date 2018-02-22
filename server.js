@@ -18,9 +18,7 @@ const myEmitter = new MyEmitter();
 io.on('connection', function (socket) {
     
 
-    if (_.get(socket, 'conn.remoteAddress') !== '192.168.0.24') {
-        _addUser(socket.id, userDb);
-    }
+    _addUser(socket.id, userDb);
 
     socket.on('splat', () => {
         myEmitter.emit('event', socket.id);
